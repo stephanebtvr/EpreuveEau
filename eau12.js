@@ -1,5 +1,7 @@
 let arr = process.argv;
 let argument = arr.slice(2);
+newArray = [];
+c = 0;
 
 const areArgsValid = (argument) => {
   isTrue = true;
@@ -15,23 +17,20 @@ const areArgsValid = (argument) => {
   return isTrue;
 };
 
-const isMinimum = (tab) => {
-  sortedTab = tab.sort((a, b) => {
-    return a - b;
-  });
-  let isMinimum = parseInt(tab[tab.length - 1]);
-
+const myBubbleSort = (tab) => {
   for (let i = 0; i < tab.length; i++) {
     for (let j = i + 1; j < tab.length; j++) {
-      difference = parseInt(Math.abs(tab[i] - tab[j]));
-      if (isMinimum > difference) {
-        isMinimum = difference;
+      if (parseInt(tab[i]) > parseInt(tab[j])) {
+        console.log(tab);
+        c = parseInt(tab[i]);
+        tab[i] = parseInt(tab[j]);
+        tab[j] = c;
       }
     }
   }
-  return isMinimum;
+  return tab;
 };
 
 areArgsValid(argument)
-  ? console.log(isMinimum(argument))
+  ? console.log(myBubbleSort(argument))
   : console.log("Error");

@@ -1,37 +1,20 @@
 let arr = process.argv;
 let argument = arr.slice(2);
+str = argument[0];
 
-const areArgsValid = (argument) => {
-  isTrue = true;
-  if (argument.length < 2) {
+const areARgsValid = (argument) => {
+  if (argument.length != 1) {
     return false;
   }
-  argument.forEach((element) => {
-    if (!isNaN(element)) {
-    } else {
-      isTrue = false;
-    }
-  });
-  return isTrue;
+  return true;
 };
-
-const isMinimum = (tab) => {
-  sortedTab = tab.sort((a, b) => {
-    return a - b;
-  });
-  let isMinimum = parseInt(tab[tab.length - 1]);
-
-  for (let i = 0; i < tab.length; i++) {
-    for (let j = i + 1; j < tab.length; j++) {
-      difference = parseInt(Math.abs(tab[i] - tab[j]));
-      if (isMinimum > difference) {
-        isMinimum = difference;
-      }
+const testDigit = (str) => {
+  for (let j = 0; j <= str.length - 1; j++) {
+    if (!parseInt(str[j])) {
+      return false;
     }
   }
-  return isMinimum;
+  return true;
 };
 
-areArgsValid(argument)
-  ? console.log(isMinimum(argument))
-  : console.log("Error");
+areARgsValid(argument) ? console.log(testDigit(str)) : console.log("Error");

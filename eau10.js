@@ -1,49 +1,23 @@
 let arr = process.argv;
 let argument = arr.slice(2);
-c = 0;
-isLower = 0;
 
-const areArgsValid = (argument) => {
-  isTrue = true;
-  if (argument.length < 2) {
+const areARgsValid = (argument) => {
+  if (argument.length <= 1) {
     return false;
   }
-  argument.forEach((element) => {
-    if (!isNaN(element)) {
-    } else {
-      isTrue = false;
-    }
-  });
-  return isTrue;
+  return true;
 };
 
-const isMinimum = (tab) => {
-  min = tab[0];
-  for (let i = 1; i < tab.length; i++) {
-    if (tab[i] < min) {
-      min = tab[i];
+const isIncludedStr = (tab) => {
+  lastElement = tab.pop();
+  for (let i = 0; i < tab.length; i++) {
+    if (tab[i] == lastElement) {
+      return i;
     }
   }
-  return min;
+  return -1;
 };
 
-const mySelectionSort = (tab) => {
-  for (let i = 0; i < tab.length - 1; i++) {
-    isLower = i;
-
-    for (let j = i + 1; j < tab.length; j++) {
-      if (parseInt(tab[isLower]) > parseInt(tab[j])) {
-        isLower = j;
-      }
-    }
-    if (isLower != i) {
-      c = parseInt(tab[i]);
-      tab[i] = parseInt(tab[isLower]);
-      tab[isLower] = c;
-    }
-  }
-  return tab;
-};
-areArgsValid(argument)
-  ? console.log(mySelectionSort(argument))
+areARgsValid(argument)
+  ? console.log(isIncludedStr(argument))
   : console.log("Error");

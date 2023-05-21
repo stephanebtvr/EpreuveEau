@@ -1,36 +1,24 @@
 let arr = process.argv;
 let argument = arr.slice(2);
-newArray = [];
-c = 0;
 
-const areArgsValid = (argument) => {
-  isTrue = true;
-  if (argument.length < 2) {
+const areARgsValid = (argument) => {
+  if (argument.length != 2 || isNaN(argument[0]) || isNaN(argument[1])) {
     return false;
   }
-  argument.forEach((element) => {
-    if (!isNaN(element)) {
-    } else {
-      isTrue = false;
-    }
+  return true;
+};
+
+const intervalMnMx = (tab) => {
+  str = "";
+  sortedTab = tab.sort((a, b) => {
+    return a - b;
   });
-  return isTrue;
-};
-
-const myBubbleSort = (tab) => {
-  for (let i = 0; i < tab.length; i++) {
-    for (let j = i + 1; j < tab.length; j++) {
-      if (parseInt(tab[i]) > parseInt(tab[j])) {
-        console.log(tab);
-        c = parseInt(tab[i]);
-        tab[i] = parseInt(tab[j]);
-        tab[j] = c;
-      }
-    }
+  for (let i = sortedTab[0]; i < sortedTab[sortedTab.length - 1]; i++) {
+    str = str + i + " ";
   }
-  return tab;
+  return str;
 };
 
-areArgsValid(argument)
-  ? console.log(myBubbleSort(argument))
+areARgsValid(argument)
+  ? console.log(intervalMnMx(argument))
   : console.log("Error");
